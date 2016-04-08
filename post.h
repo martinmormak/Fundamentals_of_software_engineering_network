@@ -1,0 +1,18 @@
+#ifndef POST_H
+#define	POST_H
+
+#define MAX_POST_LENGTH 30
+
+typedef struct {
+    char text[MAX_POST_LENGTH + 1];
+    int num_likes;
+} post_t;
+
+post_t *create_post(char *text);
+void destroy_post(post_t *post);
+void like_post(post_t *post);
+void unlike_post(post_t *post);
+char *like_count_text(post_t *post, char *buf);
+
+#endif	/* POST_H */
+
