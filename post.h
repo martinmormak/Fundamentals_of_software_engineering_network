@@ -5,7 +5,7 @@
 
 typedef struct {
     char text[MAX_POST_LENGTH + 1];
-    int num_likes;
+    int like_count;
 } post_t;
 
 post_t *create_post(char *text);
