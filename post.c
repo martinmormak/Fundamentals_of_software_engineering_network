@@ -34,15 +34,15 @@ void unlike_post(post_t *post) {
  * post - the post of interest
  * buf - a buffer at least 30 bytes long (if int is 64-bit)
  * 
- * This function is a candidate for refactoring.
+ * This function is intentionally awful - it is a candidate for refactoring.
  */
 char *like_count_text(post_t *post, char *buf) {
     int var1 = post->like_count;
     int var2 = (var1 == 1);
-    sprintf(post, "%d", var1);
+    sprintf(buf, "%d likes", var1);
     int len = strlen(buf);
     if (var2) {
-        sprintf(post, "%d like", var1);
+        sprintf(buf, "%d like", var1);
     }
     return buf;
 }
