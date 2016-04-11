@@ -75,7 +75,7 @@ void main_ui(wall_t *wall) {
 
 int main(int argc, char** argv) {
     printf("Notwork - An offline social network\n");
-    wall_t *wall = create_wall(&wall);
+    wall_t *wall = create_wall();
     main_ui(wall);
     destroy_wall(wall);
     return (EXIT_SUCCESS);
