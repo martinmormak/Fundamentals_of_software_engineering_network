@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-# include "post.h"
+#include "post.h"
 
 post_t *create_post(char *text) {
     if (strlen(text) <= MAX_POST_LENGTH) {

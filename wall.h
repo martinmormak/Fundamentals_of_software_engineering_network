@@ -16,4 +16,3 @@ void add_post(wall_t *wall, post_t *post);
 post_t *get_post(wall_t *wall, int number);
 
 #endif	/* WALL_H */
-
