@@ -1,4 +1,3 @@
-/build/
-/dist/
-/nbproject/private/
-.dep.inc
+.*
+*.o
+notwork
