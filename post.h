@@ -2,6 +2,8 @@
 #define	POST_H
 
 #define MAX_POST_LENGTH 30
+/* Space for two 64-bit integers and additional text */
+#define LIKE_COUNT_BUFFER_SIZE 60
 
 typedef struct {
     char text[MAX_POST_LENGTH + 1];

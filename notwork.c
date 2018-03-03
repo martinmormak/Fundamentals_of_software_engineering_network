@@ -9,7 +9,7 @@ void empty_input_buffer() {
 }
 
 void show_wall_ui(wall_t *wall) {
-    char buf[30];
+    char buf[LIKE_COUNT_BUFFER_SIZE];
     post_t *post;
     
     for (int i = 1; i <= wall->num_posts; i++) {

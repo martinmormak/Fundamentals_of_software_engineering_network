@@ -32,7 +32,7 @@ void unlike_post(post_t *post) {
  * singular/plural forms into account.
  * 
  * post - the post of interest
- * buf - a buffer at least 30 bytes long (if int is 64-bit)
+ * buf - a buffer at least LIKE_COUNT_BUFFER_SIZE bytes long
  * 
  * This function is intentionally awful - it is a candidate for refactoring.
  */
