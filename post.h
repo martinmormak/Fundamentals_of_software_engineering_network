@@ -13,7 +13,7 @@ typedef struct {
 post_t *create_post(char *text);
 void destroy_post(post_t *post);
 void like_post(post_t *post);
-void unlike_post(post_t *post);
+void dislike_post(post_t *post);
 char *like_count_text(post_t *post, char *buf);
 
 #endif	/* POST_H */

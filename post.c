@@ -22,7 +22,7 @@ void like_post(post_t *post) {
     post->like_count++;
 }
 
-void unlike_post(post_t *post) {
+void dislike_post(post_t *post) {
     if (post->like_count > 0)
         post->like_count--;
 }
