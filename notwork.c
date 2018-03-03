@@ -35,18 +35,30 @@ void write_post_ui(wall_t *wall) {
     }
 }
 
-void like_post_ui(wall_t *wall) {
-    int number;
-    post_t *post;
-    
+post_t *select_post_ui(wall_t *wall, char *question) {
     show_wall_ui(wall);
-    printf("Which post would you like to like? Enter number: ");
+    printf("%s Enter number: ", question);
+    int number;
     scanf("%d", &number);
     empty_input_buffer();
-    if ((post = get_post(wall, number)) != NULL) {
-        like_post(post);
-    } else {
+    post_t *post = get_post(wall, number);
+    if (post == NULL) {
         printf("Invalid post number.\n");
+    }
+    return post;
+}
+
+void like_post_ui(wall_t *wall) {
+    post_t *post = select_post_ui(wall, "Which post would you like to like?");
+    if (post != NULL) {
+        like_post(post);
+    }
+}
+
+void dislike_post_ui(wall_t *wall) {
+    post_t *post = select_post_ui(wall, "Which post would you like to dislike?");
+    if (post != NULL) {
+        dislike_post(post);
     }
 }
 
@@ -54,7 +66,7 @@ void main_ui(wall_t *wall) {
     int input;
     
     do {
-        printf("(S)how wall / (W)rite post / (L)ike post / (E)xit: ");
+        printf("(S)how wall / (W)rite post / (L)ike post / (D)islike post / (E)xit: ");
         input = getchar();
         empty_input_buffer();
         input = toupper(input);
@@ -68,6 +80,9 @@ void main_ui(wall_t *wall) {
                 break;
             case 'L':
                 like_post_ui(wall);
+                break;
+            case 'D':
+                dislike_post_ui(wall);
                 break;
         }
     } while (input != 'E');
