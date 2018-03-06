@@ -16,8 +16,8 @@ wall_t *create_wall_with_posts(int num_posts) {
 TEST empty_wall_should_have_no_posts() {
     wall_t *wall = create_wall();
 
-    ASSERT_EQ(get_post(wall, 0), NULL);
-    ASSERT_EQ(get_post(wall, 1), NULL);
+    ASSERT_EQ(NULL, get_post(wall, 0));
+    ASSERT_EQ(NULL, get_post(wall, 1));
 
     destroy_wall(wall);
     PASS();
@@ -28,7 +28,7 @@ TEST get_post_should_return_first_post() {
     post_t *post1 = create_post("Post 1");
     add_post(wall, post1);
     
-    ASSERT_EQ(get_post(wall, 1), post1);
+    ASSERT_EQ(post1, get_post(wall, 1));
     
     destroy_wall(wall);
     PASS();
@@ -39,7 +39,7 @@ TEST get_post_should_return_last_post() {
     post_t *post4 = create_post("Post 4");
     add_post(wall, post4);
     
-    ASSERT_EQ(get_post(wall, 4), post4);
+    ASSERT_EQ(post4, get_post(wall, 4));
     
     destroy_wall(wall);
     PASS();

@@ -7,7 +7,7 @@ TEST like_post_increments_like_count() {
     post_t *post = create_post("test");
     like_post(post);
 
-    ASSERT_EQ(post->like_count, 1);
+    ASSERT_EQ(1, post->like_count);
 
     destroy_post(post);
     PASS();
