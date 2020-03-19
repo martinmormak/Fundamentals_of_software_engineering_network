@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=gnu11 -Wall -pedantic
+CFLAGS = -std=c11 -Wall -pedantic -g
 LDFLAGS =
 
 TARGET = notwork

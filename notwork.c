@@ -1,6 +1,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "wall.h"
 
 void empty_input_buffer() {
@@ -19,20 +20,23 @@ void show_wall_ui(wall_t *wall) {
 }
 
 void write_post_ui(wall_t *wall) {
-    char *text = NULL;
-    size_t length = 0;
-    int read;
-    
+    char text[MAX_POST_LENGTH + 2]; // leave space for newline and 0
+    size_t newline_pos = 0;
+
     printf("Enter your post:\n");
-    read = getline(&text, &length, stdin);
-    text[read - 1] = '\0'; // remove the trailing newline
-    post_t *post = create_post(text);
-    free(text);
-    if (post != NULL) {
-        add_post(wall, post);
-    } else {
-        printf("Try to fit your post into %d characters.", MAX_POST_LENGTH);
+    fgets(text, MAX_POST_LENGTH + 2, stdin);
+
+    newline_pos = strcspn(text, "\n");
+    if (newline_pos <= MAX_POST_LENGTH) {
+        text[newline_pos] = '\0'; // remove the trailing newline
+    } else { // Newline not found, so input must be longer then the limit
+        printf("Post longer then %d characters. It would be truncated.\n",
+            MAX_POST_LENGTH);
+        text[MAX_POST_LENGTH] = 0;
+        empty_input_buffer();
     }
+    post_t *post = create_post(text);
+    add_post(wall, post);
 }
 
 post_t *select_post_ui(wall_t *wall, char *question) {
