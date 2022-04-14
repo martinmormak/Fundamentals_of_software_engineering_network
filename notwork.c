@@ -15,7 +15,7 @@ void show_wall_ui(wall_t *wall) {
     
     for (int i = 1; i <= wall->num_posts; i++) {
         post = get_post(wall, i);
-        printf("%d\t%s (%s)\n", i, post->text, like_count_text(post, buf));
+        printf("%d\t%s (%s)\n", i, post->text,like_count_text(post, buf));
     }
 }
 

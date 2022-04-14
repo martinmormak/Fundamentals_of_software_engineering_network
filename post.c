@@ -8,6 +8,7 @@ post_t *create_post(char *text) {
         post_t *post = malloc(sizeof(post_t));
         strcpy(post->text, text);
         post->like_count = 0;
+        post->dislike_count = 0;
         return post;
     } else {
         return NULL;
@@ -23,8 +24,7 @@ void like_post(post_t *post) {
 }
 
 void dislike_post(post_t *post) {
-    if (post->like_count > 0)
-        post->like_count--;
+    post->dislike_count++;
 }
 
 /*
@@ -37,12 +37,23 @@ void dislike_post(post_t *post) {
  * This function is intentionally awful - it is a candidate for refactoring.
  */
 char *like_count_text(post_t *post, char *buf) {
-    int var1 = post->like_count;
-    int var2 = (var1 == 1);
-    sprintf(buf, "%d likes", var1);
-    int len = strlen(buf);
-    if (var2) {
-        sprintf(buf, "%d like", var1);
+    if (post->like_count == 1) {
+        strcpy(buf, "1 like");
+    } else {
+        sprintf(buf, "%d likes", post->like_count);
+    }
+    return buf;
+}
+
+char *dislike_count_text(post_t *post, char *buf) {
+    if(post->dislike_count==0)
+    {
+        strcpy(buf, "");
+    }
+    else if (post->dislike_count == 1) {
+        strcpy(buf, "1 dislike");
+    } else {
+        sprintf(buf, "%d dislikes", post->dislike_count);
     }
     return buf;
 }

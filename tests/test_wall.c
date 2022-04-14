@@ -45,8 +45,19 @@ TEST get_post_should_return_last_post() {
     PASS();
 }
 
+TEST given_index_out_of_bounds_get_posts_should_return_null() {
+    wall_t *wall = create_wall_with_posts(4);
+    
+    ASSERT_EQ(NULL,get_post(wall,0));
+    ASSERT_EQ(NULL,get_post(wall,5));
+    
+    destroy_wall(wall);
+    PASS();
+}
+
 SUITE(test_wall) {
     RUN_TEST(empty_wall_should_have_no_posts);
     RUN_TEST(get_post_should_return_first_post);
     RUN_TEST(get_post_should_return_last_post);
+    RUN_TEST(given_index_out_of_bounds_get_posts_should_return_null);
 }
